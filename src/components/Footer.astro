@@ -1,0 +1,38 @@
+---
+import { AUTHOR, SOCIAL } from '../consts';
+
+const today = new Date();
+---
+
+<footer>
+	<p>
+		&copy; {today.getFullYear()}
+		{AUTHOR}. Resumos e comentários são meus; as ideias originais pertencem aos autores
+		creditados em cada artigo.
+	</p>
+	<div class="social-links">
+		{SOCIAL.map((s) => <a href={s.href} target="_blank" rel="noopener">{s.label}</a>)}
+		<a href="/rss.xml">RSS</a>
+	</div>
+</footer>
+<style>
+	footer {
+		padding: 2em 1em 6em 1em;
+		background: linear-gradient(var(--gray-gradient)) no-repeat;
+		color: rgb(var(--gray));
+		text-align: center;
+		font-size: 0.9em;
+	}
+	.social-links {
+		display: flex;
+		justify-content: center;
+		gap: 1em;
+		margin-top: 1em;
+	}
+	.social-links a {
+		color: rgb(var(--gray));
+	}
+	.social-links a:hover {
+		color: rgb(var(--gray-dark));
+	}
+</style>

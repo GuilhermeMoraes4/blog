@@ -1,0 +1,181 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+
+type Props = Partial<CollectionEntry<'blog'>['data']> & { title: string; description: string };
+
+const {
+	title,
+	description,
+	pubDate,
+	updatedDate,
+	heroImage,
+	tags = [],
+	series,
+	draft = false,
+	sources = [],
+} = Astro.props;
+
+const kindLabel = {
+	paper: 'Paper',
+	video: 'Vídeo',
+	talk: 'Talk',
+	post: 'Post',
+	docs: 'Documentação',
+	repo: 'Repositório',
+};
+---
+
+<html lang="pt-BR">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			image={heroImage}
+			type={pubDate ? 'article' : 'website'}
+		/>
+		<style>
+			main {
+				width: calc(100% - 2em);
+				max-width: 100%;
+				margin: 0;
+			}
+			.hero-image {
+				width: 100%;
+			}
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+			}
+			.prose {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
+				color: rgb(var(--gray-dark));
+			}
+			.title {
+				margin-bottom: 1em;
+				padding: 1em 0;
+				line-height: 1.1;
+			}
+			.title h1 {
+				margin: 0 0 0.5em 0;
+			}
+			.meta {
+				margin-bottom: 0.5em;
+				color: rgb(var(--gray));
+				font-size: 0.9em;
+			}
+			.tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5em;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				font-size: 0.85em;
+			}
+			.tags li {
+				color: rgb(var(--gray));
+			}
+			.draft {
+				padding: 0.5em 1em;
+				border-radius: 6px;
+				background: #fff3cd;
+				color: #664d03;
+				font-size: 0.9em;
+			}
+			.sources {
+				margin-top: 3em;
+				padding-top: 1em;
+				border-top: 1px solid rgb(var(--gray-light));
+				font-size: 0.95em;
+			}
+			.sources .kind {
+				color: rgb(var(--gray));
+				font-size: 0.85em;
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article>
+				{
+					heroImage && (
+						<div class="hero-image">
+							<Image width={1020} height={510} src={heroImage} alt="" />
+						</div>
+					)
+				}
+				<div class="prose">
+					{draft && <p class="draft">Rascunho: não aparece no build de produção.</p>}
+					<div class="title">
+						{
+							pubDate && (
+								<div class="meta">
+									<FormattedDate date={pubDate} />
+									{series && <span> · Série: {series}</span>}
+									{updatedDate && (
+										<div>
+											Atualizado em <FormattedDate date={updatedDate} />
+										</div>
+									)}
+								</div>
+							)
+						}
+						<h1>{title}</h1>
+						{
+							tags.length > 0 && (
+								<ul class="tags">
+									{tags.map((tag) => (
+										<li>#{tag}</li>
+									))}
+								</ul>
+							)
+						}
+						<hr />
+					</div>
+					<slot />
+					{
+						sources.length > 0 && (
+							<section class="sources">
+								<h2>Fontes e créditos</h2>
+								<p>
+									Este artigo é um resumo comentado. O conteúdo original pertence aos autores
+									abaixo: leia na fonte.
+								</p>
+								<ul>
+									{sources.map((s) => (
+										<li>
+											<span class="kind">[{kindLabel[s.kind]}]</span>{' '}
+											<a href={s.url} target="_blank" rel="noopener">
+												{s.title}
+											</a>
+											, {s.author}
+											{s.date && (
+												<>
+													{' '}
+													(<FormattedDate date={s.date} />)
+												</>
+											)}
+										</li>
+									))}
+								</ul>
+							</section>
+						)
+					}
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>

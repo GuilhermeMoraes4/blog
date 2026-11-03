@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/BlogPost.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<Layout title="Sobre" description={`Quem escreve o ${SITE_TITLE} e por quê.`}>
+	<!-- RASCUNHO: reescreva com a sua voz antes de publicar. -->
+	<p>
+		Sou Guilherme Moraes, Staff Data Engineer. Trabalho com Databricks, Delta Lake, Azure e GCP, e
+		hoje meu foco é a camada de contexto que agentes e LLMs consomem: RAG, evals, métricas
+		governadas e MCP.
+	</p>
+	<p>
+		Boa parte do que sai de relevante sobre dados e IA (papers, talks, posts de engenharia da
+		Anthropic, da OpenAI, do AI Engineer) está em inglês. Aqui eu leio esse material e escrevo em
+		português o que ele diz, o que muda para quem cuida do dado e onde eu discordo.
+	</p>
+	<p>
+		Todo artigo credita as fontes originais no fim. Os resumos e comentários são meus; as ideias
+		pertencem a quem as publicou primeiro.
+	</p>
+</Layout>
