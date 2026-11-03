@@ -1,0 +1,103 @@
+/* Carrossel de Instagram do blog Data with Guilherme: 1080x1350 (4:5).
+   Título: Source Serif 4 | Texto: Space Grotesk | Rótulos e rodapé: JetBrains Mono */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Space+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400;500&display=block');
+
+:root {
+	--paper: #faf8f3;
+	--paper-2: #f2eee4;
+	--ink: #16191d;
+	--ink-2: #3a3f45;
+	--petrol: #0f5c63;
+	--petrol-soft: #d7e6e4;
+	--rule: #ddd7ca;
+	--warn: #b4532a;
+	--serif: 'Source Serif 4', Georgia, serif;
+	--sans: 'Space Grotesk', system-ui, sans-serif;
+	--mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1350px; overflow: hidden; background: var(--paper); }
+
+.slide {
+	display: none;
+	position: relative;
+	width: 1080px;
+	height: 1350px;
+	padding: 128px 96px 0;
+	background: var(--paper);
+	color: var(--ink);
+	font-family: var(--sans);
+}
+.slide.on { display: block; }
+
+.kicker {
+	font-family: var(--mono);
+	font-size: 26px;
+	letter-spacing: 0.04em;
+	color: var(--petrol);
+	margin-bottom: 36px;
+}
+
+.title {
+	font-family: var(--serif);
+	font-weight: 600;
+	font-size: 104px;
+	line-height: 1.02;
+	letter-spacing: -0.025em;
+	color: var(--ink);
+}
+.title.xl { font-size: 136px; line-height: 0.98; }
+.title .hl { color: var(--petrol); }
+.title .code {
+	font-family: var(--mono);
+	font-weight: 500;
+	font-size: 0.78em;
+	letter-spacing: -0.03em;
+	color: var(--petrol);
+}
+
+.bar { width: 120px; height: 8px; background: var(--petrol); margin: 44px 0 40px; }
+
+.body {
+	font-size: 44px;
+	line-height: 1.38;
+	color: var(--ink-2);
+	max-width: 888px;
+}
+.body + .body { margin-top: 18px; }
+.body strong { font-weight: 500; color: var(--ink); }
+
+.label {
+	font-family: var(--mono);
+	font-size: 24px;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--petrol);
+}
+
+.art { position: absolute; left: 96px; right: 96px; }
+.art svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+.footer {
+	position: absolute;
+	left: 96px;
+	right: 96px;
+	bottom: 72px;
+	padding-top: 22px;
+	border-top: 2px solid var(--rule);
+	display: flex;
+	justify-content: space-between;
+	font-family: var(--mono);
+	font-size: 24px;
+	color: var(--ink-2);
+}
+
+/* traço padrão dos ícones */
+svg .s { fill: none; stroke: var(--petrol); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+svg .k { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+svg .d { stroke-dasharray: 10 9; }
+svg .pf { fill: #fffdf8; }
+svg .mono { font-family: var(--mono); fill: var(--petrol); }
+svg .sans { font-family: var(--sans); fill: var(--ink-2); }
+svg .serif { font-family: var(--serif); fill: var(--petrol); }
