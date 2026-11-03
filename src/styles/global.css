@@ -59,9 +59,14 @@ body {
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	overflow-wrap: break-word;
+	/* Rodapé sempre no fim da tela, mesmo em página curta. */
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 
 main {
+	flex: 1 0 auto;
 	width: 100%;
 	max-width: calc(var(--measure) + 2rem);
 	margin: 0 auto;
