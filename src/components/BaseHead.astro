@@ -52,5 +52,16 @@ const fullTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 <meta property="og:description" content={description} />
 {image && <meta property="og:image" content={new URL(image.src, Astro.url)} />}
 
+{
+	import.meta.env.PROD && (
+		<script
+			is:inline
+			defer
+			src="https://static.cloudflareinsights.com/beacon.min.js"
+			data-cf-beacon='{"token": "0a7ddb09001744a99baede04432c660d"}'
+		/>
+	)
+}
+
 <!-- Twitter -->
 <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />

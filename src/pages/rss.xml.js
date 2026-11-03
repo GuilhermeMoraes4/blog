@@ -8,6 +8,7 @@ export async function GET(context) {
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,
 		site: context.site,
+		stylesheet: '/rss.xsl',
 		customData: '<language>pt-BR</language>',
 		items: posts.map((post) => ({
 			title: post.data.title,

@@ -1,0 +1,38 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<BaseHead title="Busca" description="Busque nos artigos do blog." />
+		<link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Busca</h1>
+			<div id="search"></div>
+			<noscript>A busca precisa de JavaScript.</noscript>
+		</main>
+		<Footer />
+		<!-- O índice só existe depois do build (npm run build && npm run preview); no dev a busca fica vazia. -->
+		<script is:inline src="/pagefind/pagefind-ui.js"></script>
+		<script is:inline>
+			window.addEventListener('DOMContentLoaded', () => {
+				new PagefindUI({
+					element: '#search',
+					showSubResults: true,
+					translations: {
+						placeholder: 'Buscar artigos',
+						zero_results: 'Nada encontrado para [SEARCH_TERM]',
+						clear_search: 'Limpar',
+						load_more: 'Mais resultados',
+					},
+				});
+			});
+		</script>
+	</body>
+</html>
