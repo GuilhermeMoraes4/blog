@@ -1,57 +1,112 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import FormattedDate from './FormattedDate.astro';
+import { groupByMonth, readingTime } from '../lib/posts';
 
 interface Props {
 	posts: CollectionEntry<'blog'>[];
 }
 
 const { posts } = Astro.props;
+const groups = groupByMonth(posts);
+const day = (d: Date) =>
+	d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', timeZone: 'UTC' }).replace('.', '');
 ---
 
 {
 	posts.length === 0 ? (
-		<p class="empty">Nenhum artigo publicado ainda.</p>
+		<p class="empty">Nenhum artigo publicado ainda. O primeiro está a caminho.</p>
 	) : (
-		<ul>
-			{posts.map((post) => (
-				<li>
-					<FormattedDate date={post.data.pubDate} />
-					<a href={`/blog/${post.id}/`}>{post.data.title}</a>
-					<p>{post.data.description}</p>
-				</li>
-			))}
-		</ul>
+		groups.map((g) => (
+			<section class="group">
+				<h2 class="eyebrow">
+					{g.label} · {g.posts.length} {g.posts.length === 1 ? 'artigo' : 'artigos'}
+				</h2>
+				<ul>
+					{g.posts.map((post) => (
+						<li>
+							<time datetime={post.data.pubDate.toISOString()}>{day(post.data.pubDate)}</time>
+							<div>
+								<a class="title" href={`/blog/${post.id}/`}>
+									{post.data.title}
+								</a>
+								<p class="excerpt">{post.data.description}</p>
+								<p class="meta">
+									{post.data.tags.map((t) => (
+										<a class="tag" href={`/tags/${t}/`}>
+											#{t}
+										</a>
+									))}
+									<span>{readingTime(post)} min de leitura</span>
+								</p>
+							</div>
+						</li>
+					))}
+				</ul>
+			</section>
+		))
 	)
 }
 
 <style>
+	.group {
+		margin-bottom: 2.5rem;
+	}
+	.group h2 {
+		margin: 0 0 1rem;
+		padding-bottom: 0.5rem;
+		border-bottom: 1px solid var(--border);
+	}
 	ul {
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 	li {
-		margin-bottom: 1.75em;
+		display: grid;
+		grid-template-columns: 4.5rem 1fr;
+		gap: 1rem;
+		margin: 0 0 1.75rem;
 	}
-	li time {
-		display: block;
-		color: rgb(var(--gray));
-		font-size: 0.85em;
+	time {
+		padding-top: 0.3rem;
+		color: var(--ink-muted);
+		font-family: var(--font-sans);
+		font-size: 0.8rem;
+		font-variant-numeric: tabular-nums;
 	}
-	li a {
-		font-size: 1.25em;
-		font-weight: 700;
+	.title {
+		color: var(--ink);
+		font-size: 1.3rem;
+		font-weight: 600;
+		line-height: 1.3;
 		text-decoration: none;
 	}
-	li a:hover {
-		text-decoration: underline;
+	.title:hover {
+		color: var(--accent);
 	}
-	li p {
-		margin: 0.25em 0 0 0;
-		color: rgb(var(--gray-dark));
+	.excerpt {
+		margin: 0.3rem 0 0.4rem;
+		color: var(--ink-muted);
+		font-size: 1rem;
+		line-height: 1.55;
+	}
+	.meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin: 0;
+		color: var(--ink-muted);
+		font-family: var(--font-sans);
+		font-size: 0.8rem;
 	}
 	.empty {
-		color: rgb(var(--gray));
+		color: var(--ink-muted);
+		font-style: italic;
+	}
+	@media (max-width: 560px) {
+		li {
+			grid-template-columns: 1fr;
+			gap: 0.15rem;
+		}
 	}
 </style>

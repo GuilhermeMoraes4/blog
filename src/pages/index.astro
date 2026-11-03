@@ -17,24 +17,33 @@ const posts = (await getPosts()).slice(0, 10);
 	<body>
 		<Header />
 		<main>
-			<h1>{SITE_TITLE}</h1>
-			<p class="tagline">{SITE_TAGLINE}</p>
-			<p>{SITE_DESCRIPTION}</p>
-			<h2>Últimos artigos</h2>
+			<section class="intro">
+				<p class="eyebrow">{SITE_TAGLINE}</p>
+				<h1>Papers e talks de dados e IA, lidos por quem cuida do dado.</h1>
+				<p>
+					{SITE_DESCRIPTION} <a href="/about">Mais sobre o blog</a>.
+				</p>
+			</section>
 			<PostList posts={posts} />
-			<p><a href="/blog">Todos os artigos</a></p>
+			{posts.length > 0 && <p class="all"><a href="/blog">Todos os artigos →</a></p>}
 		</main>
 		<Footer />
 	</body>
 </html>
 
 <style>
-	h1 {
-		margin-bottom: 0.25em;
+	.intro {
+		margin-bottom: 3.5rem;
 	}
-	.tagline {
-		margin-top: 0;
-		color: rgb(var(--gray));
-		font-size: 1.1em;
+	.intro h1 {
+		margin: 0.6rem 0 1rem;
+	}
+	.intro p:last-child {
+		color: var(--ink-muted);
+		font-size: 1.1rem;
+	}
+	.all {
+		font-family: var(--font-sans);
+		font-size: 0.9rem;
 	}
 </style>

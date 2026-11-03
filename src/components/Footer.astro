@@ -1,38 +1,60 @@
 ---
-import { AUTHOR, SOCIAL } from '../consts';
+import { AUTHOR, SITE_TAGLINE, SOCIAL } from '../consts';
 
 const today = new Date();
 ---
 
 <footer>
-	<p>
-		&copy; {today.getFullYear()}
-		{AUTHOR}. Resumos e comentários são meus; as ideias originais pertencem aos autores
-		creditados em cada artigo.
-	</p>
-	<div class="social-links">
-		{SOCIAL.map((s) => <a href={s.href} target="_blank" rel="noopener">{s.label}</a>)}
-		<a href="/rss.xml">RSS</a>
+	<div class="inner">
+		<p class="tagline">{SITE_TAGLINE}</p>
+		<p>
+			Resumos e comentários são de {AUTHOR}. As ideias originais pertencem aos autores creditados
+			em cada artigo.
+		</p>
+		<div class="row">
+			<span>&copy; {today.getFullYear()} {AUTHOR}</span>
+			<nav>
+				{SOCIAL.map((s) => <a href={s.href} target="_blank" rel="noopener">{s.label}</a>)}
+				<a href="/rss.xml">RSS</a>
+			</nav>
+		</div>
 	</div>
 </footer>
+
 <style>
 	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
-		text-align: center;
-		font-size: 0.9em;
+		margin-top: 2rem;
+		border-top: 1px solid var(--border);
+		background: var(--paper-muted);
+		color: var(--ink-muted);
+		font-family: var(--font-sans);
+		font-size: 0.85rem;
 	}
-	.social-links {
+	.inner {
+		max-width: calc(var(--measure) + 2rem);
+		margin: 0 auto;
+		padding: 2rem 1rem 3rem;
+	}
+	.tagline {
+		color: var(--ink);
+		font-family: var(--font-serif);
+		font-size: 1rem;
+		font-style: italic;
+	}
+	.row {
 		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 0.75rem;
 	}
-	.social-links a {
-		color: rgb(var(--gray));
+	nav {
+		display: flex;
+		gap: 1rem;
 	}
-	.social-links a:hover {
-		color: rgb(var(--gray-dark));
+	a {
+		color: var(--ink-muted);
+	}
+	a:hover {
+		color: var(--ink);
 	}
 </style>

@@ -9,6 +9,19 @@ import Header from '../components/Header.astro';
 	<head>
 		<BaseHead title="Busca" description="Busque nos artigos do blog." />
 		<link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+		<style is:global>
+			#search {
+				--pagefind-ui-scale: 0.85;
+				--pagefind-ui-primary: var(--accent);
+				--pagefind-ui-text: var(--ink);
+				--pagefind-ui-background: var(--surface);
+				--pagefind-ui-border: var(--border);
+				--pagefind-ui-tag: var(--paper-muted);
+				--pagefind-ui-border-width: 1px;
+				--pagefind-ui-border-radius: 8px;
+				--pagefind-ui-font: var(--font-sans);
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
