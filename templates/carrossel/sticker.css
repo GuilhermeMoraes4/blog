@@ -1,0 +1,65 @@
+/* Estilo padrão do carrossel: Sticker + post. 1080x1350 (4:5).
+   Pixelify Sans só em título curto e sticker. Número sempre em Inter: a fonte pixelada faz 5 parecer 9. */
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@600;700&family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=block');
+
+:root {
+	--azul: #1650e6;
+	--amarelo: #ffd84a;
+	--verde: #12a150;
+	--verde-claro: #64d98f;
+	--petroleo: #0f5c63;
+	--tinta: #0e1116;
+	--cinza: #6a7078;
+	--claro: #eef1f4;
+	--preto: #0a1020;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1350px; overflow: hidden; background: #fff; }
+.slide { display: none; position: relative; width: 1080px; height: 1350px; overflow: hidden; font-family: 'Inter', sans-serif; }
+.slide.on { display: block; }
+.px { font-family: 'Pixelify Sans', sans-serif; font-weight: 700; letter-spacing: .01em; }
+
+/* Capa e chamada final */
+.blue { background: var(--azul); color: #fff; text-align: center; }
+.hb { position: absolute; left: 40px; right: 40px; top: 54px; font-size: 92px; line-height: 1.02; text-transform: uppercase; }
+.hb span { color: var(--amarelo); }
+.win { position: absolute; left: 90px; right: 90px; top: 340px; height: 700px; background: var(--preto); border-radius: 14px; border: 4px solid var(--preto); box-shadow: 14px 14px 0 rgba(6,20,80,.55); overflow: hidden; text-align: left; }
+.wb { background: #e8ecf5; color: #18203a; padding: 14px 24px; font: 700 27px 'JetBrains Mono', monospace; display: flex; gap: 12px; align-items: center; }
+.wb i { width: 16px; height: 16px; background: #18203a; display: inline-block; }
+.code { padding: 34px 40px; font: 500 38px/1.62 'JetBrains Mono', monospace; color: #e9eef9; white-space: pre; }
+.code b { color: var(--verde-claro); font-weight: 500; }
+.code u { color: var(--amarelo); text-decoration: none; }
+.stick { position: absolute; left: 372px; top: 860px; transform: rotate(-7deg); background: #f7fff4; border: 6px solid var(--verde); outline: 6px solid #f7fff4; color: var(--verde); font-size: 100px; padding: 6px 30px 10px; box-shadow: 10px 12px 0 rgba(0,0,0,.35); white-space: nowrap; }
+.sb { position: absolute; left: 40px; right: 40px; top: 1104px; font-size: 62px; line-height: 1.1; text-transform: uppercase; }
+.sb span { color: var(--amarelo); }
+.hd { position: absolute; left: 0; right: 0; bottom: 40px; font: 500 26px 'JetBrains Mono', monospace; opacity: .85; }
+
+/* Telas internas em formato de post, sempre do próprio perfil e sem selo de verificado */
+.post { background: #fff; color: var(--tinta); padding: 118px 74px 0; }
+.pg { position: absolute; right: 74px; top: 56px; font: 500 26px 'JetBrains Mono', monospace; color: var(--cinza); }
+.who { display: flex; align-items: center; gap: 24px; }
+.av { width: 100px; height: 100px; border-radius: 50%; background: var(--petroleo); color: #fff; display: grid; place-items: center; font: 800 38px 'Inter', sans-serif; }
+.nm { font-weight: 800; font-size: 38px; }
+.hdl { color: var(--cinza); font-size: 32px; margin-top: 2px; }
+.txt { font-size: 47px; line-height: 1.32; margin-top: 44px; font-weight: 500; }
+.txt b { font-weight: 800; }
+.txt + .txt { margin-top: 26px; }
+.duo { position: absolute; left: 74px; right: 74px; top: 708px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.sq { height: 540px; border-radius: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; overflow: hidden; padding: 24px; }
+.dark { background: #0a0d10; color: #f4f6f8; }
+.pet { background: var(--petroleo); color: #fff; }
+.lite { background: var(--claro); color: var(--tinta); }
+.chunk { font: 700 58px/1.2 'JetBrains Mono', monospace; }
+.rot { font-size: 32px; font-weight: 700; margin-bottom: 14px; }
+.lite .rot { color: var(--cinza); }
+.num { font: 800 136px/1 'Inter', sans-serif; letter-spacing: -.03em; }
+.pet .num { color: var(--amarelo); }
+
+/* Créditos */
+.fontes { margin-top: 64px; display: grid; grid-template-columns: 150px 1fr; row-gap: 62px; column-gap: 24px; align-items: baseline; }
+.fontes .tp { font: 700 30px 'JetBrains Mono', monospace; color: var(--petroleo); }
+.fontes p { font-size: 42px; line-height: 1.28; font-weight: 500; }
+.fontes small { display: block; font-size: 34px; color: var(--cinza); font-weight: 500; margin-top: 6px; }
+.nota { position: absolute; left: 74px; right: 74px; bottom: 96px; background: var(--claro); border-radius: 24px; padding: 40px 44px; font-size: 40px; line-height: 1.32; font-weight: 500; }
+.nota b { font-weight: 800; }

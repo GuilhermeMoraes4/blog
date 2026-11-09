@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Carrossel: modelo Sticker + post</title>
+<!-- Ao copiar para divulgacao/<slug>/instagram/carrossel.html, trocar o caminho por ../../../templates/carrossel/sticker.css -->
+<link rel="stylesheet" href="sticker.css">
+</head>
+<body>
+
+<!-- capa: título curto em pixel, código com o conceito e sticker com a palavra-chave -->
+<section class="slide blue">
+	<h1 class="hb px">O RAG está<br><span>reinventando o</span></h1>
+	<div class="win">
+		<div class="wb"><i></i><i></i><i></i> GET /chunk/42/contexto</div>
+<div class="code">{
+  <b>"documento"</b>: <u>"relatório 2T2023"</u>,
+  <b>"entidade"</b>:  <u>"ACME"</u>,
+  <b>"período"</b>:   <u>"2º trimestre"</u>,
+  <b>"seção"</b>:     <u>"receita"</u>
+}</div>
+	</div>
+	<div class="stick px">METADADO</div>
+	<p class="sb px">sem dar <span>esse nome</span></p>
+	<div class="hd">@datawithguilherme</div>
+</section>
+
+<!-- conceito: texto em cima e dois quadros embaixo -->
+<section class="slide post">
+	<div class="pg">2/5</div>
+	<div class="who"><div class="av">DG</div><div><div class="nm">Data with Guilherme</div><div class="hdl">@datawithguilherme</div></div></div>
+	<p class="txt"><b>O problema:</b> você corta o documento em pedaços, e um deles diz “a receita cresceu 3%”.</p>
+	<p class="txt">De qual empresa? Qual trimestre? O&nbsp;pedaço não sabe.</p>
+	<div class="duo">
+		<div class="sq lite"><span class="chunk">“a receita<br>cresceu 3%”</span></div>
+		<div class="sq dark"><span class="px" style="font-size: 300px; line-height: 1; color: var(--amarelo);">?</span></div>
+	</div>
+</section>
+
+<!-- dado: rótulo em cada número, conferido com a fonte -->
+<section class="slide post">
+	<div class="pg">3/5</div>
+	<div class="who"><div class="av">DG</div><div><div class="nm">Data with Guilherme</div><div class="hdl">@datawithguilherme</div></div></div>
+	<p class="txt"><b>Contextual retrieval, da Anthropic:</b> um LLM escreve em cada chunk de onde ele veio.</p>
+	<p class="txt">Falha de busca no top-20, quase pela metade:</p>
+	<div class="duo">
+		<div class="sq lite"><span class="rot">sem contexto</span><span class="num">5,7%</span></div>
+		<div class="sq pet"><span class="rot">com contexto + BM25</span><span class="num">2,9%</span></div>
+	</div>
+</section>
+
+<!-- créditos: sempre antes da chamada final -->
+<section class="slide post">
+	<div class="pg">4/5</div>
+	<div class="who"><div class="av">DG</div><div><div class="nm">Data with Guilherme</div><div class="hdl">@datawithguilherme</div></div></div>
+	<p class="txt"><b>Fontes usadas neste carrossel:</b></p>
+	<div class="fontes">
+		<span class="tp">[post]</span><p>“Introducing Contextual Retrieval”<small>Anthropic, 2024</small></p>
+		<span class="tp">[paper]</span><p>“Late Chunking”<small>Günther et al., Jina AI, 2024</small></p>
+		<span class="tp">[docs]</span><p>Retrieval e File search<small>OpenAI</small></p>
+	</div>
+	<div class="nota"><b>Os números são das fontes.</b> A leitura de engenharia de dados é minha.</div>
+</section>
+
+<!-- chamada final -->
+<section class="slide blue">
+	<h2 class="hb px" style="top: 170px;">O artigo<br><span>completo</span></h2>
+	<div class="stick px" style="left: 50%; top: 520px; transform: translateX(-50%) rotate(-5deg);">LINK NA BIO</div>
+	<p class="sb px" style="top: 880px;">Salva pra<br><span>consultar depois</span></p>
+	<div class="hd">@datawithguilherme</div>
+</section>
+
+<script>
+	const n = parseInt(new URLSearchParams(location.search).get('s') || '1', 10);
+	const slides = document.querySelectorAll('.slide');
+	(slides[n - 1] || slides[0]).classList.add('on');
+</script>
+</body>
+</html>

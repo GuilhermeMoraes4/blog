@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Carrossel: modelo Sinal laranja</title>
+<!-- Ao copiar para divulgacao/<slug>/instagram/carrossel.html, trocar o caminho por ../../../templates/carrossel/sinal-laranja.css -->
+<link rel="stylesheet" href="sinal-laranja.css">
+</head>
+<body>
+
+<!-- capa: brilho embaixo, título e cartão com o conceito -->
+<section class="slide">
+	<div class="grid"></div><div class="glow" style="bottom: -330px;"></div>
+	<div class="head"><span><b>@datawithguilherme</b> | camada de contexto</span><em>RAG · 01/05</em></div>
+	<div class="crop"><i></i><i></i><i></i><i></i></div>
+	<div class="wrap">
+		<h1 class="t">O RAG está<br>reinventando<br><span>o metadado.</span></h1>
+		<p class="it">sem dar esse nome</p>
+	</div>
+	<div class="card" style="top: 760px;">
+		<div class="bar"><i></i><i></i><i></i>contexto_do_chunk.yaml</div>
+		<div class="row"><b>documento</b><span>relatório 2T2023</span></div>
+		<div class="row"><b>entidade</b><span>ACME</span></div>
+		<div class="row"><b>período</b><span>2º trimestre</span></div>
+		<div class="row"><b>seção</b><span>receita</span></div>
+	</div>
+	<div class="foot">arrasta →</div>
+</section>
+
+<!-- conceito: brilho em cima, citação e etiquetas -->
+<section class="slide">
+	<div class="grid"></div><div class="glow" style="top: -420px;"></div>
+	<div class="head"><span><b>@datawithguilherme</b> | o problema</span><em>RAG · 02/05</em></div>
+	<div class="crop"><i></i><i></i><i></i><i></i></div>
+	<div class="wrap">
+		<h2 class="t m">O pedaço<br><span>não sabe</span><br>de onde veio.</h2>
+	</div>
+	<div class="q" style="top: 590px;">“a receita<br>cresceu 3%”</div>
+	<div class="tags" style="top: 880px;"><span>qual empresa?</span><span>qual trimestre?</span></div>
+	<p class="sub" style="top: 1015px;">Você cortou o documento em chunks.<br><b>O contexto ficou para trás.</b></p>
+	<div class="foot">@datawithguilherme</div>
+</section>
+
+<!-- dado: rótulo em cada número, conferido com a fonte -->
+<section class="slide">
+	<div class="grid"></div><div class="glow" style="bottom: -420px;"></div>
+	<div class="head"><span><b>@datawithguilherme</b> | abordagem 1 de 3</span><em>RAG · 03/05</em></div>
+	<div class="crop"><i></i><i></i><i></i><i></i></div>
+	<div class="wrap">
+		<h2 class="t m">Quase metade<br><span>das falhas</span><br>a menos.</h2>
+		<p class="it m">contextual retrieval, da Anthropic</p>
+	</div>
+	<div class="card" style="top: 660px;">
+		<div class="bar"><i></i><i></i><i></i>falha de busca no top-20</div>
+		<div class="meter">
+			<p>sem contexto</p>
+			<div class="track"><div class="fill" style="width: 500px; background: rgba(255,255,255,.2);"></div><span class="num">5,7%</span></div>
+			<p>com contexto + BM25</p>
+			<div class="track"><div class="fill" style="width: 254px; background: var(--a);"></div><span class="num" style="color: var(--a);">2,9%</span></div>
+		</div>
+	</div>
+	<p class="sub lin" style="top: 1118px;">Um LLM escreve em cada chunk de onde ele veio.</p>
+	<div class="foot">@datawithguilherme</div>
+</section>
+
+<!-- créditos: sempre antes da chamada final -->
+<section class="slide">
+	<div class="grid"></div><div class="glow" style="top: -480px;"></div>
+	<div class="head"><span><b>@datawithguilherme</b> | fontes</span><em>RAG · 04/05</em></div>
+	<div class="crop"><i></i><i></i><i></i><i></i></div>
+	<div class="wrap">
+		<h2 class="t m">De onde<br><span>veio isso.</span></h2>
+	</div>
+	<div class="card" style="top: 500px;">
+		<div class="bar"><i></i><i></i><i></i>fontes.md</div>
+		<div class="fonte"><b>[post]</b>“Introducing Contextual Retrieval”<small>Anthropic, 2024</small></div>
+		<div class="fonte"><b>[paper]</b>“Late Chunking”<small>Günther et al., Jina AI, 2024</small></div>
+		<div class="fonte"><b>[docs]</b>Retrieval e File search<small>OpenAI</small></div>
+	</div>
+	<div class="foot">@datawithguilherme</div>
+</section>
+
+<!-- chamada final -->
+<section class="slide">
+	<div class="grid"></div><div class="glow" style="bottom: -330px;"></div>
+	<div class="head"><span><b>@datawithguilherme</b> | leia o artigo</span><em>RAG · 05/05</em></div>
+	<div class="crop"><i></i><i></i><i></i><i></i></div>
+	<div class="wrap" style="top: 280px;">
+		<h2 class="t">O artigo<br>completo<br><span>está na bio.</span></h2>
+		<p class="it">salva pra consultar depois</p>
+	</div>
+	<div class="card" style="top: 800px;">
+		<div class="bar"><i></i><i></i><i></i>leia_o_artigo.md</div>
+		<div class="row"><b>onde</b><span>link na bio</span></div>
+		<div class="row"><b>site</b><span>datawithguilherme.pages.dev</span></div>
+		<div class="row"><b>fontes</b><span>todas citadas</span></div>
+	</div>
+	<div class="foot">@datawithguilherme</div>
+</section>
+
+<script>
+	const n = parseInt(new URLSearchParams(location.search).get('s') || '1', 10);
+	const slides = document.querySelectorAll('.slide');
+	(slides[n - 1] || slides[0]).classList.add('on');
+</script>
+</body>
+</html>
